@@ -194,6 +194,30 @@ $ git commit notes.txt
  1 file changed, 89 insertions(+)
  create mode 100644 notes.txt
 
+5.git commit -a notes.txt
+ 直接做提交的操作，不用先加到缓存区了
 
+6.git commit -m "提交信息的注释，用-m这个参数就可以不进入Vim，直接提交注释，比较方便" notes.txt
 
+7.git log 
+查看版本状态
+
+$ git log
+commit 56feed95db947f80bb626b2edc30f070c05a3287 (HEAD -> master)
+Author: clark_pro <clark1991@github.com>
+Date:   Sun Jan 6 12:43:36 2019 +1100
+
+    This is the second commit, modify notes.txt file and test -m parameter
+
+commit 603692bdb7086b5e5fa4b322aa3714c15fe75996
+Author: clark_pro <clark1991@github.com>
+Date:   Sun Jan 6 12:26:41 2019 +1100
+
+    This is the first time for commiting a file. File name is notes.txt
+    Why the background colour of this line is read.
+    The colour font of this line is different from above line.
+    This line's colour is the same with line 3.
+    Colour does not  changes.
+
+以上有两个版本
 
