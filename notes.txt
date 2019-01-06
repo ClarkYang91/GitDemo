@@ -221,3 +221,51 @@ Date:   Sun Jan 6 12:26:41 2019 +1100
 
 以上有两个版本
 
+---------------------
+多屏显示控制方式：	|
+空格向下翻页			|
+b 向上翻页			|
+q 退出				|
+---------------------
+
+可以根据修改参数来显示log的信息
+	1).git log --pretty=oneline
+		只显示一行
+
+		$ git log --pretty=oneline
+		d85ee4523194189a226953a79d024485065f4fa4 (HEAD -> master) This is the Thired time commit, git log command de                                                   scription was added, for testing version control
+		56feed95db947f80bb626b2edc30f070c05a3287 This is the second commit, modify notes.txt file and test -m parame                                                   ter
+		603692bdb7086b5e5fa4b322aa3714c15fe75996 This is the first time for commiting a file. File name is notes.txt                                                    Why the background colour of this line is read. The colour font of this line is different from above line.                                                    This line's colour is the same with line 3. Colour does not      changes.
+
+	2).git log --oneline
+		只显示一行，并且hash值是缩写
+
+		$ git log --oneline
+		d85ee45 (HEAD -> master) This is the Thired time commit, git log command description was added, for testing                                                    version control
+		56feed9 This is the second commit, modify notes.txt file and test -m parameter
+		603692b This is the first time for commiting a file. File name is notes.txt Why the background colour of thi                                                   s line is read. The colour font of this line is different from above line. This line's colour is the same wi                                                   th line 3. Colour does not       changes.
+
+	3).git reflog
+		显示当前版本的副本，和怎样移动HEAD指针
+
+		$ git reflog
+		d85ee45 (HEAD -> master) HEAD@{0}: reset: moving to d85ee45
+		56feed9 HEAD@{1}: reset: moving to 56feed9
+		56feed9 HEAD@{2}: reset: moving to 56feed9
+		d85ee45 (HEAD -> master) HEAD@{3}: commit: This is the Thired time commit, git log command description was added, for testing version control
+		56feed9 HEAD@{4}: commit: This is the second commit, modify notes.txt file and test -m parameter
+		603692b HEAD@{5}: commit (initial): This is the first time for commiting a file. File name is notes.txt
+
+
+8. 版本的后退
+
+	1).基于索引值操作[推荐]
+		git reset --hard [局部索引值]
+		git reset --hard d85ee45
+	2).使用^符号：只能后退
+		git reset --hard HEAD^
+		注：一个^表示后退一步，n 个表示后退n 步
+	3).使用~符号：只能后退
+		git reset --hard HEAD~n
+		注：表示后退n 步
+
