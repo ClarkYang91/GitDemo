@@ -23,6 +23,30 @@ total 4
 drwxr-xr-x 1 hp 197121 0 Dec 14 23:42 .git/
 -rw-r--r-- 1 hp 197121 0 Dec 15 00:26 notes.txt
 -------------------------------------------------
+cat 文件名		查看文件内容，可以根据参数不同设置查看方式
+
+1).一次显示整个文件:cat filename
+
+2).从键盘创建一个文件:cat > filename 只能创建新文件,不能编辑已有文件.
+
+3).将几个文件合并为一个文件:cat file1 file2 > file
+
+$ cat .git/config
+[core]
+        repositoryformatversion = 0
+        filemode = false
+        bare = false
+        logallrefupdates = true
+        symlinks = false
+        ignorecase = true
+[gui]
+        wmstate = normal
+        geometry = 1034x563+183+146 216 255
+[user]
+        name = clark_pro
+        email = clark1991@github.com
+
+以上是查看保存在config里面的内容，签名信息就保存在此文件中
 
 
 -------------------------------------------------
@@ -33,6 +57,17 @@ drwxr-xr-x 1 hp 197121 0 Dec 14 23:42 .git/
 -------------------------------------------------
 -------------------------------------------------
 -------------------------------------------------
+
+----Vim 编辑器小知识----
+1.：set nu
+显示行数
+
+2.直接按i键 进入 insert模式
+
+3.按esc键退出编辑模式
+
+4.：wq
+保存并退出
 
 
 
@@ -68,12 +103,43 @@ Email :example@github.com
 用户优先级：
 	1. 项目级别/仓库级别： 尽在当前本地库有效
 		git config user.name clark_pro
-		git config user.email example@github.com
+		git config user.email clark1991@github.com
+
+		----签名信息保存的位置：./.git/config 文件
+
+		$ cat .git/config
+		[core]
+		        repositoryformatversion = 0
+		        filemode = false
+		        bare = false
+		        logallrefupdates = true
+		        symlinks = false
+		        ignorecase = true
+		[gui]
+		        wmstate = normal
+		        geometry = 1034x563+183+146 216 255
+		[user]
+		        name = clark_pro
+		        email = clark1991@github.com
 
 	2. 系统用户级别，当前操作系统的用户权限范围
-		git config --global user.name clark_pro
-		git config --global user.email example@github.com
-		
+		git config --global user.name lucy_glb
+		git config --global user.email lucy_glb@github.com
+
+		----签名保存在系统用户的文件列表下，可以用cd ~ 跳转过去再查看
+		----~/.gitconfig 在这个文件中保存的有系统级用户的信息
+
+		hp@hp-PC MINGW64 ~
+		$ cat .gitconfig
+		[user]
+		        name = lucy_glb
+		        email = lucy_glb@github.com
+		[filter "lfs"]
+		        required = true
+		        clean = git-lfs clean -- %f
+		        smudge = git-lfs smudge -- %f
+		        process = git-lfs filter-process
+
 
 用户级别优先级
 1.就近原则：项目级别优先于系统用户级别，二者都有时时，项目级别的签名权限比较大
@@ -83,6 +149,50 @@ Email :example@github.com
 
 
 
+----具体怎么用git操作----
+
+1. 查看状态
+git status			查看当前repository的状态
+
+$ git status
+On branch master
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+
+---no commits yet--- 	本地库没有任何的提交的东西
+---nothing to commit---	缓存区中也没有什么可以提交的东西
+
+
+2. 添加文件到缓存区
+git add 文件名
+
+$ git add notes.txt
+
+$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+        new file:   notes.txt
+
+3. 如果想从缓存区中取出保存的文件，就如上文提示的用以下命令
+
+$ git rm --cached notes.txt
+
+---notes.txt文件就从缓存区取出来了，再调用git status就会显示和1.中一样的内容
+
+4.git commit notes.txt
+进入输入提交消息的界面，保存并退出后，会出现以下信息
+
+$ git commit notes.txt
+[master (root-commit) 603692b] This is the first time for commiting a file. File name is notes.txt Why                the background colour of this line is read. The colour font of this line is different from above line               . This line's colour is the same with line 3. Colour does not    changes.
+ 1 file changed, 89 insertions(+)
+ create mode 100644 notes.txt
 
 
 
