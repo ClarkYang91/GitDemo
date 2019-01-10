@@ -257,7 +257,7 @@ q 退出				|
 		603692b HEAD@{5}: commit (initial): This is the first time for commiting a file. File name is notes.txt
 
 
-8. 版本的后退
+8.版本的后退 git reset
 
 	1).基于索引值操作[推荐]
 		git reset --hard [局部索引值]
@@ -268,4 +268,56 @@ q 退出				|
 	3).使用~符号：只能后退
 		git reset --hard HEAD~n
 		注：表示后退n 步
+
+	---参数对比, 可以git help reset查看
+
+	1).git reset --soft 
+	  仅仅在本地库移动HEAD指针,不动缓存区和工作区
+	  Does not touch the index file or the working tree at all
+
+	2).git reset --mixed
+	  在本地库移动HEAD指针，并且重置缓存区
+	  Resets the index but not the working tree
+
+	3).git reset --hard
+	  在本地库移动HEAD指针,重置缓存区和工作区
+      Resets the index and working tree
+
+
+9.比较文件的差异  
+	1).git diff [文件名]
+	  将工作区中的文件和缓存区进行比较
+	
+	2).git diff [本地库中历史版本--此处是索引值，hash值；或者用HEAD^] [文件名]
+	  将工作区中的文件和本地库历史记录比较
+	
+	3).git diff 
+	  即不带文件名，则比较所有文件
+
+
+----Git分支管理----
+
+1.分支(branch)的好处
+  1).同时并行推进多个功能开发，提高开发效率
+  2).各个分支在开发过程中，如果某一个分支开发失败，不会对其他分支有任何影响。
+     失败的分支删除重新开始即可。
+
+2.命令
+  1).创建分支
+	git branch [分支名]
+
+  2).查看分支
+	git branch -v
+	$ git branch -v
+	* master 82061d3 This is the final version on 7th of 2019, notes ends with version reverse. total 270 lines.
+
+	如果有多个分支，那么当前所在的分支为绿色，并且前面有个星星
+
+
+  3).切换分支
+	git checkout [分支名]
+
+
+
+
 
