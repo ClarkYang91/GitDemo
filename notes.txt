@@ -324,7 +324,37 @@ q 退出				|
   	第二步：执行merge命令，进行分支合并
     	   git merge [有新内容的分支名]
 
+3.冲突处理
+  即，当有多人对统一行代码做修改时，会出现冲突
 
+  通常状态下，git的提示栏状态如下
+  hp@hp-PC MINGW64 /d/GitDemo/gitDec (master)
+  冲突状态下会变成
+  hp@hp-PC MINGW64 /d/GitDemo/gitDec (master|MERGING)
+
+  上述括号中表示的是，master和某个分支合并的时候，自动合并失败了，所以现在正在解决中
+
+  通常冲突的文件会标识成一下状态
+  <<<<<<< HEAD
+  ksdajf;lkjsdakl;f
+  =======
+  askdjflkasdjf
+  >>>>>>> master
+
+  HEAD 到等号的位置是当前分支内容，
+  等号到下面的>>>>>>>的位置表示另一个分支的内容
+
+
+  冲突的解决
+	第一步：编辑文件，删除特殊符号
+	第二步：把文件修改到满意的程度，保存退出
+	第三步：git add [文件名]
+	第四步：git commit -m "日志信息"
+	注意：此时commit 一定不能带文件名
+
+----分支管理----
+
+说明，Git的hash函数用的是SHA算法，并不是通用的MD5
 
 
 

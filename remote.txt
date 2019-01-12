@@ -1,0 +1,25 @@
+此笔记将说明，怎么样连接本地库和远程库
+
+
+首先有github的账号的情况下，现在GitHub上创建一个新的repository
+
+然后确定使用SSH或者HTTPS协议，进行本地库和远程库的连接
+此次创建的repository是GitDemo
+
+HTTPS：https://github.com/ClarkYang91/GitDemo.git
+SSH  ：git@github.com:ClarkYang91/GitDemo.git
+
+
+在本地库可以先保存这么一长串东西
+git remote add origin https://github.com/ClarkYang91/GitDemo.git
+
+以后再次使用的时候，直接用origin代替
+
+1.查看remote的连接
+$ git remote -v
+origin  https://github.com/ClarkYang91/GitDemo.git (fetch)
+origin  https://github.com/ClarkYang91/GitDemo.git (push)
+ 
+
+
+
