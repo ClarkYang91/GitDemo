@@ -21,5 +21,62 @@ origin  https://github.com/ClarkYang91/GitDemo.git (fetch)
 origin  https://github.com/ClarkYang91/GitDemo.git (push)
  
 
+2.git clone [远程地址(HTTPS/SSH)]
+clone一个远程库.
+首先选择一个文件夹，然后用git clone HTTPS或SSH方式的连接
+
+$ git clone https://github.com/ClarkYang91/GitDemo.git
+Cloning into 'GitDemo'...
+remote: Enumerating objects: 22, done.
+remote: Counting objects: 100% (22/22), done.
+remote: Compressing objects: 100% (10/10), done.
+Unpacking objects: 100% (22/22), done.
+remote: Total 22 (delta 6), reused 22 (delta 6), pack-reused 0
+
+	克隆一个repository后，以下的信息也clone到了本地
+	1).完整的远程库的内容
+	2).origin所代表的远程地址名
+	3).已经完成了git init的初始化本地库操作
+
+3.团队成员邀请
+首先需要repository的所有者邀请某一个成员，操作就是在GitHub上发送邀请(邀请连接在repository->Setting->Collaborators)，需要输入被邀请者的名字，然后发送链接，由被邀请者访问链接并接受邀请
+
+
+4.git fetch [远程库地址] [分支名]
+通常是 git fetch origin master
+
+这里需要注意的是，fetch操作后，只是把远程段的repository下载下来，但是没有改变本地的工作区，所以用cat命令查看的时候，其实还是原先的文件
+
+如果此时想看下载下来的文件的话，需要用git checkout origin/master，再用cat
+
+将下载下来的额repository更新到本地库有两种方法：
+
+第一种：fetch+merge
+1).git fetch origin master
+2).git merge origin/master
+合并完了之后，就有新的内容了
+
+第二种：pull
+git pull origin master
+
+-----------------------------------------------------
+	pull=fetch+merge
+	git fetch [远程库地址名] [远程分支名]
+	git merge [远程库地址名/远程分支名]
+	git pull  [远程库地址名] [远程分支名]
+
+这两种操作都可以，有的时候我们可以先fetch下来，看一下有没有错误或别的需求，再更新到本地库，那么就可以先fetch，再merge
+
+如果本身文件不复杂的话，就直接pull
+-----------------------------------------------------
+
+----团队开发时的冲突----
+重点！！！
+如果不是基于Github远程库的最新版本，成员则不能直接推送，需要先pull到最新的版本
+
+如果pull下来后，进入到了冲突编辑状态，则参照分支冲突的修改方法解决即可
+
+
+
 
 
